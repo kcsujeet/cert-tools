@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Certificate Generation</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="contents.js"></script>
+  </head>
+</html>
+
+
+
+<body>
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-lg-10">
+            <div >
+             <button class="btn btn-primary" onclick="displayConf();this.style.visibility='hidden';visibleButton()" >View Conf</button>
+         </div>
+       <div class="jumbotron">
+           <h id = "output"> Your output will be displayed here.</h>
+       </div>
+            <div class="row justify-content-center" id="showHidden" style="visibility: hidden;">
+                <div class="col-lg-12">
+                    <div class="row justify-content-center">
+                    <h3>Copy the above content to <a class="text-primary">conf.ini</a> file</h3>
+                </div>
+                <div class="row justify-content-center">
+                    <button class="btn btn-primary" id="formPageButton">Go to Form Page</button>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+  <script>
+      function displayConf() {
+          var conf = localStorage.getItem("conf");
+          document.getElementById("output").innerHTML = conf;
+      }
+
+      function visibleButton() {
+          document.getElementById('showHidden').style.visibility="visible";
+      }
+  </script>
+
+<style>
+
+    .jumbotron{
+        margin-bottom: 10px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .container{
+        margin: auto;
+    }
+    input, textarea{
+        width: 170px;
+        margin: 20px;
+        box-sizing: border-box;
+    }
+    html, body{
+        height: 100%;
+    }
+
+    form{
+        border: 1px solid #CCC;
+    }
+</style>

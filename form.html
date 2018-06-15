@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Certificate Generation</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="contents.js"></script>
+  </head>
+<html>
+
+<body >
+
+
+<div id="printContent" class=" container h-100">
+<div class="row justify-content-center">
+  <h1 class="text-primary"> Certificate Creation Form</h1>
+</div>
+  <div class="row justify-content-center align-items-center ">
+
+    <div class="col-lg-8">
+
+    <form id="form"  action="details.html"  method="get">
+      <div class="controls">
+        <div class="row">
+           <div class="col-md-6">
+            <div class="form-group">
+        <label for="issuerName">Issuer Name:</label>
+        <input class="form-control" class="form-control" type="text" id="issuerName" name="issuer_name">
+      </div>
+          </div>
+
+      <div class="col-md-6">
+        <div class="form-group ">
+        <label>Issuer Email:</label>
+         <input class="form-control" type="text" id="issuerEmail" name="issuer_email">
+      </div>
+      </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+        <div class="form-group ">
+        <label>Issuer URL:</label>
+        <input class="form-control" type="text" id="issuerURL" name="issuer_url">
+      </div>
+      </div>
+
+        <div class="col-md-6">
+          <div class="form-group ">
+         <label>Issuer ID:</label>
+         <input class="form-control" type="text" id="issuerID" name="issuer_id">
+      </div>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-6">
+               <div class="form-group ">
+           <label>Issuer PublicKey:</label>
+         <input  class="form-control" type="text" id="issuerPublicKey" name="issuer_public_key">
+      </div>
+          </div>
+          <div class=" col-md-6">
+            <div class="form-group ">
+         <label>Badge ID:</label>
+         <input class="form-control" type="text" id="badgeID" name="badge_id ">
+      </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group ">
+          <label>Revocation List:</label>
+         <input class="form-control" type="text" id="revocationList" name="revocation_list">
+      </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-6">
+             <div class="form-group ">
+         <label >Issuer Logo Src:</label>
+         <input class="form-control"  type="text" id="issuerLogo" name="issuer_logo_file" >
+      </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group ">
+        <label>Certificate Image Src:</label>
+         <input  class="form-control" type="text" id="certificateImage" name="cert_image_file"  >
+      </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group ">
+        <label>Issuer Signature Src:</label>
+         <input  class="form-control" type="text" id="issuerSignature" name="issuer_signature_file"  >
+      </div>
+          </div>
+        </div>
+
+       <div class="form-group ">
+         <label>Certificate Description:</label>
+         <textarea class="form-control" type="text" id="certificateDescription" name="certificate_description"></textarea>
+      </div>
+
+       <div class="form-group ">
+         <label>Certificate Title:</label>
+         <textarea class="form-control" type="text" id="certificateTitle" name="certificate_title "></textarea>
+      </div>
+
+       <div class="form-group ">
+         <label>Criteria Narrative:</label>
+         <textarea class="form-control" type="text" id="criteriaNarrative" name="criteria_narrative"></textarea>
+      </div>
+      <div class="form-group ">
+      <button id="submitButton" type="submit" class="btn btn-primary" onclick="printDiv('printContent')" > Submit</button>
+      </div>
+
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+function printDiv(divName) {
+    var inputContents;
+    inputContents = "";
+    var input = document.getElementsByTagName("input");
+    for (i= 0; i < (input.length -1); i++) {
+        inputContents += input[i].name + "=" + input[i].value + "<br>";
+    }
+    inputContents += "data_dir = sample_data " + "<br>"  + "template_dir = certificate_templates"
+        + "<br>"  + " template_file_name = test.json "
+        + "<br>"  + "unsigned_certificates_dir = unsigned_certificates\n"
+        + "<br>"  +"roster = rosters/roster_testnet.csv\n"
+       + "<br>"  + "filename_format = uuid"
+       + "<br>"  + "no_clobber = True ";
+
+    localStorage.setItem("conf", inputContents);
+
+}
+</script>
+
+
+
+<style>
+
+
+  input{
+    width: 100%;
+  }
+
+  html,body {
+  height: 100%;
+}
+#submitButton{
+  margin-top: 20px;
+  
+}
+input[type=image]{
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%;
+}
+
+table{
+  width: 100%;
+}
+
+
+  form{
+
+  width: 100%;
+     padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+
+  }
+</style>
+
+
+</body>
